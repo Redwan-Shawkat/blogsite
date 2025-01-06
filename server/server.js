@@ -1,5 +1,8 @@
 /** @format */
 
+// -----> dotenv
+require("dotenv").config();
+
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -9,11 +12,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const UI =
-  "mongodb+srv://redwanshawkat:G3S5CQkSaNQ9Ddli@ic-cluster.dg65srl.mongodb.net/blogsite?retryWrites=true&w=majority&appName=ic-cluster";
+const URL = process.env.URL;
 
 mongoose
-  .connect(UI)
+  .connect(URL)
   .then(() => console.log("Database is connected!"))
   .catch((e) => console.log("Database Connection Error: ", e));
 
